@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/firstRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/home"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/home"
+                android:onClick="backHome" />
+
+            <TextView
+                android:id="@+id/income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/indigo_daisy"
+                android:gravity="center_horizontal"
+                android:text="@string/income"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChart"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                >
+
+            </com.github.mikephil.charting.charts.PieChart>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/recent_transactions"
+                android:textSize="14sp" />
+
+            <ListView
+                android:id="@+id/income_list"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:background="@drawable/text_background"
+
+                android:divider="@null"
+                android:dividerHeight="0dp"/>
+            <Button
+                android:id="@+id/addIncome_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/btn_custom"
+                android:fontFamily="@font/roboto_regular"
+                android:onClick="AddIncomeActivity"
+                android:text="@string/add_income"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

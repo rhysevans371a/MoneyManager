@@ -1,0 +1,155 @@
+<resources>
+    <string name="app_name">Money Manager</string>
+    <string name="Open">Open drawer</string>
+    <string name="Close">Close Drawer</string>
+    <string name="text_accounts">All Accounts</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="text_login">Login</string>
+    <string name="text_register">Register</string>
+    <string name="error_message_name">Enter Full Name</string>
+    <string name="error_message_email">Enter Valid Email</string>
+    <string name="error_message_age">Enter Age</string>
+    <string name="error_message_password">Enter Password</string>
+    <string name="success_message">Registration Successful</string>
+    <string name="text_not_member">No account yet? Create one</string>
+    <string name="text_already_member">Already a member? Login</string>
+    <string name="error_email_exists">Email Already Exists</string>
+    <string name="error_password_match">Password Does Not Matches</string>
+    <string name="error_valid_email_password">Wrong Email or Password</string>
+    <string name="action_settings">Settings</string>
+    <string name="text_hello">Hello,</string>
+    <string name="text_title">Money Manager</string>
+    <string name="save">Save</string>
+    <string name="account_name">Account Name</string>
+    <string name="name_your_account_here">Account Name Here</string>
+    <string name="balance">Balance</string>
+    <string name="edit_balance">Edit Balance</string>
+    <string name="description">Description</string>
+    <string name="account_description">Description</string>
+    <string name="tab_text_1">Balance</string>
+    <string name="tab_text_2">History</string>
+    <string name="tab_text_3">Chart</string>
+    <string name="balanceResult">Please add an account</string>
+    <string name="addAccount">Add Account</string>
+    <string name="account">Account</string>
+    <string name="delete_all_accounts">Delete All Accounts</string>
+    <string name="delete_all_history">Delete All History</string>
+    <string name="source">Source</string>
+    <string name="amount">Amount</string>
+    <string name="income_numeric">Income Amount</string>
+    <string name="expense_numeric">Expense Amount</string>
+    <string name="period">Period</string>
+    <string name="date">Date</string>
+    <string name="AccountType">Account Type</string>
+    <string name="balanceText">Current Account Balance £ </string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+
+    <string-array name="period">
+        <item>"Day"</item>
+        <item>"Month"</item>
+        <item>"Year"</item>
+    </string-array>
+
+    <string-array name="chartType">
+        <item>"Expense"</item>
+        <item>"Income"</item>
+    </string-array>
+
+    <string-array name="incomeSource">
+        <item>"Salary"</item>
+        <item>"Additional Income"</item>
+        <item>"Cash Gift"</item>
+    </string-array>
+
+    <string-array name="expenseSource">
+        <item>"Regular Spend"</item>
+        <item>"Essential Spend"</item>
+        <item>"Entertainment"</item>
+        <item>"Paypal"</item>
+    </string-array>
+
+    <string-array name="accountTypes">
+        <item>"Current"</item>
+        <item>"Savings"</item>
+    </string-array>
+
+    <string-array name="duration">
+        <item>"Month"</item>
+        <item>"Year"</item>
+    </string-array>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Money Manager</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="set_reminders">Set Reminders</string>
+    <string name="targets">Targets</string>
+    <string name="settings">Settings</string>
+    <string name="main">Main</string>
+    <string name="logout">Logout</string>
+    <string name="todo">TODO</string>
+    <string name="welcome">Welcome</string>
+    <string name="account_balance">Account Balance £  </string>
+    <string name="savings_balance">Savings Balance £  </string>
+    <string name="income">Income</string>
+    <string name="expenses">Expenses</string>
+    <string name="recent_transactions">Recent Transactions</string>
+    <string name="add_income">Add Income</string>
+    <string name="income_title">Income £  </string>
+    <string name="expense_title">Expense £  </string>
+    <string name="add_expense">Add Expense</string>
+    <string name="essential">Essential £</string>
+    <string name="regular">Regular £</string>
+    <string name="entertainment">Entertainment £</string>
+    <string name="paypal">Paypal £</string>
+    <string name="categories">Categories</string>
+    <string name="please_do_not_use_this_app_whilst_driving">Please do not use this app whilst driving</string>
+    <string name="set_maximum_expense">Set Maximum Expense</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="set_savings_target">Set savings target</string>
+    <string name="select_contact">Select Contact</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="delete_history">Delete History</string>
+    <string name="save_target">Save Target</string>
+    <string name="save_limit">Save Limit</string>
+    <string name="title_activity_send_sms">SendSms</string>
+
+    <string name="send_message">Send Message</string>
+    <string name="enter_message">Enter Message</string>
+    <string name="send_sms">Send Sms</string>
+    <string name="already_a_member_login">Already a member? Login</string>
+    <string name="pref_color_key">pref_color_key</string>
+    <string name="pref_size_key">pref_size_key</string>
+    <string name="display_text">Display Text</string>
+    <string name="change_text_color">Change Text Colour</string>
+    <string name="text_size">Text Size</string>
+    <string name="pref_size_default">14sp</string>
+    <string name="text_colour">Text Colour</string>
+    <string name="background_colour">Background Colour</string>
+</resources>

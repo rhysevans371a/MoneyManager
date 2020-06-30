@@ -1,0 +1,51 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item android:title="Text Size">
+        android:id="@+id/textSize"
+        android:orderInCategory="100"
+        <menu>
+            <item
+                android:id="@+id/textSmall"
+                android:title="Small" />
+            <item
+                android:id="@+id/textMed"
+                android:title="Medium" />
+            <item
+                android:id="@+id/textLarge"
+                android:title="Large" />
+        </menu>
+    </item>
+    <item android:title="Text Colour">
+        android:id="@+id/textColour"
+        android:orderInCategory="100"
+        <menu>
+            <item
+                android:id="@+id/textBlack"
+                android:title="Black" />
+            <item
+                android:id="@+id/textGreen"
+                android:title="Green" />
+            <item
+                android:id="@+id/textBlue"
+                android:title="Blue" />
+        </menu>
+    </item>
+    <item android:title="Background Colour">
+        android:id="@+id/background_colour"
+
+        <menu>
+            <item
+                android:id="@+id/backgroundDark"
+                android:title="Dark" />
+            <item
+                android:id="@+id/backgroundLight"
+                android:title="Light" />
+            <item
+                android:id="@+id/backgroundContrast"
+                android:title="Contrast" />
+        </menu>
+    </item>
+
+
+</menu>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <resources android:name="customTheme">
+
+        <style name="textSmall">
+            <item name="android:textSize">8sp</item>
+        </style>
+        <style name="textMed">
+            <item name="android:textSize">14sp</item>
+        </style>
+        <style name="textLarge">
+            <item name="android:textSize">18sp</item>
+        </style>
+        <style name="textBlack">
+            <item name="android:textColor">black</item>
+        </style>
+        <style name="textGreen">
+            <item name="android:textColor">green</item>
+        </style>
+        <style name="textBlue">
+            <item name="android:textColor">blue</item>
+        </style>
+        <style name="backgroundDark">
+            <item name="android:backgroundColor">Dark</item>
+        </style>
+        <style name="backgroundLight">
+            <item name="android:backgroundColor">Light</item>
+        </style>
+        <style name="backgroundContrast">
+            <item name="android:backgroundColor">Orange
+            </item>
+        </style>
+    </resources>
+</PreferenceScreen>
