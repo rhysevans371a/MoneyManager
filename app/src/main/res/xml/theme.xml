@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <resources android:name="customTheme">
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="themeID">
 
         <style name="textSmall">
             <item name="android:textSize">8sp</item>
@@ -31,4 +30,3 @@
             </item>
         </style>
     </resources>
-</PreferenceScreen>

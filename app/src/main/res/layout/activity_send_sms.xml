@@ -9,22 +9,21 @@
     android:paddingTop="20dp"
     android:paddingRight="20dp"
     android:paddingBottom="20dp"
-    tools:context=".LoginActivity">
+    tools:context=".SendSms">
 
     <androidx.appcompat.widget.LinearLayoutCompat
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/home"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/home"
-            android:onClick="backHome" />
+            android:background="@drawable/home" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
@@ -68,7 +67,9 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:hint="@string/enter_message"
-            android:textColorHint="@color/abc_primary_text_material_dark" />
+            android:inputType="text"
+            android:textColor="@color/design_default_color_on_secondary"
+            android:textColorHint="@color/design_default_color_on_secondary" />
 
         <Button
             android:id="@+id/sendSms"

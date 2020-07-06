@@ -152,4 +152,6 @@
     <string name="pref_size_default">14sp</string>
     <string name="text_colour">Text Colour</string>
     <string name="background_colour">Background Colour</string>
+    <string name="channel_name">Notify</string>
+    <string name="channel_description">Add expense notify</string>
 </resources>

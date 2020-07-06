@@ -38,7 +38,7 @@ public class NotificationWorker extends Worker {
         savingsMonth = mDatabase.savings_month(savingsMonth);
         savingsTarget = mDatabase.savings_target(savingsTarget);
         Log.e("Check contact number", contactNumber);
-        if (savingsMonth == savingsTarget) { SmsManager smgr = SmsManager.getDefault();
+        if (savingsMonth >= savingsTarget) { SmsManager smgr = SmsManager.getDefault();
             smgr.sendTextMessage(contactNumber,null,Message,null,null);
             Log.e("Mobile", contactNumber);
         }
@@ -57,12 +57,14 @@ public class NotificationWorker extends Worker {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new
                     NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT);
+            assert manager != null;
             manager.createNotificationChannel(channel);
         }
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelId)
                 .setContentTitle(task)
                 .setContentText(desc)
                 .setSmallIcon(R.mipmap.ic_launcher);
+        assert manager != null;
         manager.notify(1, builder.build());
     }
 }

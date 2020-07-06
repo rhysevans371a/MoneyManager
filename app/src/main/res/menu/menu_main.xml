@@ -16,36 +16,22 @@
                 android:title="Large" />
         </menu>
     </item>
-    <item android:title="Text Colour">
-        android:id="@+id/textColour"
+    <item android:title="Theme">
+        android:id="@+id/theme"
         android:orderInCategory="100"
         <menu>
             <item
-                android:id="@+id/textBlack"
-                android:title="Black" />
+                android:id="@+id/contrastTheme"
+                android:title="Contrast" />
             <item
-                android:id="@+id/textGreen"
-                android:title="Green" />
-            <item
-                android:id="@+id/textBlue"
-                android:title="Blue" />
-        </menu>
-    </item>
-    <item android:title="Background Colour">
-        android:id="@+id/background_colour"
-
-        <menu>
-            <item
-                android:id="@+id/backgroundDark"
+                android:id="@+id/darkTheme"
                 android:title="Dark" />
             <item
-                android:id="@+id/backgroundLight"
+                android:id="@+id/lightTheme"
                 android:title="Light" />
-            <item
-                android:id="@+id/backgroundContrast"
-                android:title="Contrast" />
         </menu>
     </item>
+
 
 
 </menu>

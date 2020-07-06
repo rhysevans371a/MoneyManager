@@ -100,7 +100,7 @@ public class Expense extends MainActivity {
             for (int i = 0; i < RecordsArray.size(); i++) {
                 Record record = RecordsArray.get(i);
                 if (record.getExpenseAmount() != null) {
-                    accountRecords.add('-' + "  £   " + record.getExpenseAmount() + "  " + record.getAccountType()+ "   "+ record.getExpenseSource()
+                    accountRecords.add('-' + "  £   " + record.getExpenseAmount() + "  " + record.getAccountType() + "   " + record.getExpenseSource()
                             + "  " + record.getDate() + "  " + record.getRecordDescription());
                 }
             }

@@ -154,16 +154,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     Intent intentHome = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intentHome);
                 }
-            }, 5000);
-
+            }, 2000);
 
         } else {
             // Snack Bar to show error message that record already exists
             Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
         }
-
     }
-
     /**
      * This method is to empty all input edit text
      */

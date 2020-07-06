@@ -2,6 +2,7 @@ package com.stu54259.MoneyManager;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -39,6 +40,7 @@ public class Income extends MainActivity {
     Float TOTAL_EXPENSES = 0f;
     Float TOTAL_INCOMES = 0f;
     Button home;
+    SharedPreferences prfs;
 
     public static int rgb(String hex) {
         int color = (int) Long.parseLong(hex.replace("#", ""), 16);
@@ -51,7 +53,9 @@ public class Income extends MainActivity {
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_income);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setTitle("Income");
@@ -104,7 +108,7 @@ public class Income extends MainActivity {
             for (int i = 0; i < IncomeArray.size(); i++) {
                 Record record = IncomeArray.get(i);
                 if (record.getIncomeAmount() != null) {
-                    accountRecords.add('+' + "  £   " + record.getIncomeAmount() + "  " + record.getAccountType()+ "   "+ record.getIncomeSource()
+                    accountRecords.add('+' + "  £   " + record.getIncomeAmount() + "  " + record.getAccountType() + "   " + record.getIncomeSource()
                             + "  " + record.getDate() + "  " + record.getRecordDescription());
                 }
 

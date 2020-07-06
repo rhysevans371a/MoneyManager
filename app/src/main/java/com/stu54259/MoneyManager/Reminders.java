@@ -7,7 +7,9 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
@@ -22,10 +24,13 @@ import androidx.core.app.NotificationCompat;
 
 import com.stu54259.MoneyManager.Helpers.NotificationPublisher;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import static androidx.core.app.NotificationCompat.PRIORITY_HIGH;
 
 public class Reminders extends MainActivity {
     public static final String NOTIFICATION_CHANNEL_ID = "10001";
@@ -38,6 +43,7 @@ public class Reminders extends MainActivity {
     EditText reminder;
     DatePickerDialog picker;
     Button home;
+
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -60,17 +66,14 @@ public class Reminders extends MainActivity {
 
         reminder = findViewById(R.id.reminderText);
         eText = findViewById(R.id.reminderDate);
-        eText = findViewById(R.id.reminderDate);
         eText.setInputType(InputType.TYPE_NULL);
         eText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Calendar cldr = Calendar.getInstance();
-                int day = cldr.get(Calendar.DAY_OF_MONTH);
-                int month = cldr.get(Calendar.MONTH);
+                final int day = cldr.get(Calendar.DAY_OF_MONTH);
+                final int month = cldr.get(Calendar.MONTH);
                 int year = cldr.get(Calendar.YEAR);
-                int hour = 0;
-                int minute = 0;
                 // date picker dialog
                 picker = new DatePickerDialog(Reminders.this,
                         new DatePickerDialog.OnDateSetListener() {
@@ -78,6 +81,7 @@ public class Reminders extends MainActivity {
                             @SuppressLint("SetTextI18n")
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                eText.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
                                 Log.e("day check", String.valueOf(dayOfMonth));
                             }
                         }, year, month, day);
@@ -92,20 +96,29 @@ public class Reminders extends MainActivity {
         Intent notificationIntent = new Intent(Reminders.this, NotificationPublisher.class);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        assert alarmManager != null;
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, delay, pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, delay, pendingIntent);
     }
 
     private Notification getNotification(String content) {
         String description = reminder.getText().toString();
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, default_notification_channel_id);
-        builder.setContentTitle("Scheduled Notification");
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
+        builder.setContentTitle("Reminder Service");
         builder.setContentText(description);
-        builder.setSmallIcon(R.drawable.ic_launcher_foreground);
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setStyle(new NotificationCompat.BigTextStyle());
+        builder.setVibrate(new long[]{1000, 1000})
+                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setLights(Color.RED, 500, 500);
         builder.setAutoCancel(true);
+        builder.setPriority(PRIORITY_HIGH);
         builder.setChannelId(NOTIFICATION_CHANNEL_ID);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Context context;
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        builder.setContentIntent(pendingIntent);
         return builder.build();
     }
 
@@ -162,12 +175,24 @@ public class Reminders extends MainActivity {
     }
 
     public void saveReminder(View view) {
-        String myFormat = "yy/MM/dd";
+        String myFormat = "yyyy/MM/dd";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
-        Date date = cldr.getTime();
-        eText.setText(sdf.format(date));
+        String date = eText.getText().toString();
+        Date date1 = null;
+        long milli = 0;
+        try {
+            date1 = sdf.parse(date);
+            milli = date1.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
-        scheduleNotification(getNotification(eText.getText().toString()), date.getTime());
+        Log.d("date", date);
+        // Set date at 7AM
+        long delay = (milli + 25200000);
+        Log.e("Delay", String.valueOf(milli));
+        Log.e("Timein milli's", String.valueOf(delay));
+        scheduleNotification(getNotification(reminder.getText().toString()), delay);
 
         Intent intentHome = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intentHome);

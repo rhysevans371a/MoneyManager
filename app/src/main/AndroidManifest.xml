@@ -18,9 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity
-            android:name=".SendSms"
-            android:label="@string/title_activity_send_sms" />
 
         <service
             android:name=".sendAlert"
@@ -63,6 +60,9 @@
         <activity
             android:name=".Reminders"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SendSms"
+            android:label="@string/title_activity_send_sms" />
 
 
         <receiver android:name=".Helpers.NotificationPublisher" />

@@ -51,6 +51,7 @@ public class Categories extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -282,7 +283,7 @@ public class Categories extends MainActivity {
 
 
         }
-        // Copyright 2020 Philipp Jahoda (MP Android Chart Created By Philip Jahoda
+        // Copyright 2020 Philipp Jahoda (MP Android Chart Created By Philip Jahoda)
 
         PieDataSet set = new PieDataSet(request.equals(INCOME) ? incomeEntries : expenseEntries,
                 (request.equals(INCOME) ? INCOME : EXPENSE) + " Category in £");
@@ -296,6 +297,7 @@ public class Categories extends MainActivity {
         pieChart.setCenterTextSize(10);
         //pieChart.setDrawEntryLabels(true);
 //        pieChart.setEntryLabelTextSize(20);
+
 
         set.setSliceSpace(2);
         set.setValueTextSize(12);

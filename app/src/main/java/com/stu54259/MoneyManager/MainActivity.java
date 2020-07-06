@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,17 +44,23 @@ public class MainActivity extends AppCompatActivity {
     UserDatabase db;
     DatabaseManager mDatabase;
     Double month_income;
-    SharedPreferences sharedPreferences;
+    float scaleFloat;
+    float scaleString;
+    int theme, themeString;
+    SharedPreferences prfs;
     private double savingsTarget;
 
     @SuppressLint({"SetTextI18n", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        prfs = getSharedPreferences("MoneyManager", Context.MODE_PRIVATE);
+        themeString = prfs.getInt("Theme", 1);
+        setTheme(themeString);
         super.onCreate(savedInstanceState);
-        sharedPreferences = getSharedPreferences("com.stu54259.MoneyManager", Context.MODE_PRIVATE);
-        setTheme(sharedPreferences.getInt("defaultThemeId", R.style.textMed));
+        scaleString = prfs.getFloat("FontScale", 1.0f);
+        adjustFontScale(getResources().getConfiguration(), scaleString);
+        Log.e("Scale", String.valueOf(scaleString));
         setContentView(R.layout.activity_main);
-
         db = new UserDatabase(this);
         mDatabase = new DatabaseManager(this);
         contactNumber = UserDatabase.getColumnMobile();
@@ -78,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.income:
                         Toast.makeText(MainActivity.this, "Income", Toast.LENGTH_SHORT).show();
                         Intent intentIncome = new Intent(getApplicationContext(), Income.class);
+                        intentIncome.putExtra("FontScale", scaleString);
                         startActivity(intentIncome);
                         break;
                     case R.id.expenses:
@@ -114,10 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         return true;
                 }
-
-
                 return true;
-
             }
         });
 
@@ -162,11 +168,11 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < RecordsArray.size(); i++) {
                 Record record = RecordsArray.get(i);
                 if (record.getExpenseAmount() != null) {
-                    accountRecords.add('-' + "  £   " + record.getExpenseAmount() + "  " + record.getAccountType()+ "   " + record.getExpenseSource()
+                    accountRecords.add('-' + "  £   " + record.getExpenseAmount() + "  " + record.getAccountType() + "   " + record.getExpenseSource()
                             + "  " + record.getDate() + "  " + record.getRecordDescription());
                 }
                 if (record.getIncomeAmount() != null) {
-                    accountRecords.add('+' + "  £   " + record.getIncomeAmount() + "  " + record.getAccountType()+ "   "+ record.getIncomeSource()
+                    accountRecords.add('+' + "  £   " + record.getIncomeAmount() + "  " + record.getAccountType() + "   " + record.getIncomeSource()
                             + "  " + record.getDate() + "  " + record.getRecordDescription());
                 }
 
@@ -194,7 +200,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } else {
-
 
             mDatabase.closeDB();
         }
@@ -224,48 +229,65 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        int themeID = R.style.textMed;
         switch (id) {
             case R.id.textSmall:
-                themeID = R.style.textSmall;
-
-            case R.id.textMed:
-                themeID = R.style.textMed;
-
-            case R.id.textLarge:
-                themeID = R.style.textLarge;
-            case R.id.textBlack:
-                themeID = R.style.textBlack;
-            case R.id.textGreen:
-                themeID = R.style.textGreen;
-            case R.id.textBlue:
-                themeID = R.style.textBlue;
-            case R.id.backgroundDark:
-                themeID = R.style.backgroundDark;
-            case R.id.backgroundLight:
-                themeID = R.style.backgroundLight;
-            case R.id.backgroundContrast:
-                themeID = R.style.backgroundContrast;
+                scaleFloat = 0.5f;
                 break;
-
+            case R.id.textMed:
+                scaleFloat = 1.0f;
+                break;
+            case R.id.textLarge:
+                scaleFloat = 1.5f;
+                break;
+            case R.id.contrastTheme:
+                theme = R.style.Contrast;
+                break;
+            case R.id.darkTheme:
+                theme = R.style.Dark;
+                break;
+            case R.id.lightTheme:
+                theme = R.style.AppTheme;
+                break;
         }
-        sharedPreferences.edit().putInt("defaultThemeID", themeID).apply();
+        SharedPreferences.Editor prfs = getSharedPreferences("MoneyManager", Context.MODE_PRIVATE).edit();
+        prfs.putFloat("FontScale", scaleFloat);
+        prfs.putInt("Theme", theme);
+        prfs.commit();
+
         // Activate the navigation drawer toggle
         if (t.onOptionsItemSelected(item)) {
+
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);
+    }
+// This method scales the font up or down depending on user selected scale
+    public void adjustFontScale(Configuration configuration, float scale) {
+        configuration = getResources().getConfiguration();
+        configuration.fontScale = scale;
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        getBaseContext().getResources().updateConfiguration(configuration, metrics);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (sharedPreferences.getBoolean("first_run", true)) {
-            // Do first run stuff here then set 'first_run' as false
-            // using the following line to edit/commit prefs
-            sharedPreferences.edit().putBoolean("first_run", false).apply();
-            sharedPreferences.edit().putInt("defaultThemeID", R.style.textMed).apply();
+        if (prfs.getBoolean("firstrun", true)) {
+
+            SharedPreferences.Editor prfs = getSharedPreferences("MoneyManager", Context.MODE_PRIVATE).edit();
+            prfs.putFloat("FontScale", 1.0f);
+            prfs.putInt("Theme", R.style.AppTheme);
+            prfs.putBoolean("firstrun", false).commit();
         }
     }
 

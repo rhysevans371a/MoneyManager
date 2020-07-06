@@ -2,10 +2,15 @@ package com.stu54259.MoneyManager;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -22,15 +27,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.stu54259.MoneyManager.sql.Account;
 import com.stu54259.MoneyManager.sql.DatabaseManager;
 import com.stu54259.MoneyManager.sql.Income;
 import com.stu54259.MoneyManager.sql.Record;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+
+import static androidx.core.app.NotificationCompat.PRIORITY_HIGH;
 
 public class AddIncomeActivity extends MainActivity {
 
@@ -261,6 +272,8 @@ public class AddIncomeActivity extends MainActivity {
         String chosenSource = mSourceSpinner.getSelectedItem().toString();
         String userIncomeAmount = mIncomeAmount.getText().toString();
         String userIncomeDescription = mDescriptionEditText.getText().toString();
+        String myFormat = "yyyy/MM/dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
         String date = eText.getText().toString();
 
         Integer month = month_select;
@@ -273,7 +286,6 @@ public class AddIncomeActivity extends MainActivity {
 
         Record income_record = new Record(chosenAccountName, chosenSource,
                 String.valueOf(Double.parseDouble(userIncomeAmount)), "", "", userIncomeDescription, date, month);
-
         long income_record_id = mDatabaseManager.createIncomeRecord(income_record);
 
         Account chosenAccount = mDatabaseManager.getAccount(mAccountSpinner.getSelectedItemPosition() + 1);
@@ -282,22 +294,58 @@ public class AddIncomeActivity extends MainActivity {
         incomeCheck();
 
     }
+
     public void incomeCheck() {
 
         savingsMonth = mDatabaseManager.savings_month(savingsMonth);
         Log.e("Savingsmonth", String.valueOf(savingsMonth));
         savingsTarget = mDatabaseManager.savings_target(savingsTarget);
         Log.e("Savings Target", String.valueOf(savingsTarget));
-            if (savingsMonth >= savingsTarget) {
-                Toast.makeText(getApplicationContext(), "Congratulations you have reached your savings target for the month", Toast.LENGTH_LONG).show();
-            }
-
-            mDatabaseManager.closeDB();
-
-            Intent intentHome = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intentHome);
-            setResult(RESULT_OK, intentHome);
-            finish();
+        if (savingsMonth >= savingsTarget) {
+            sendNotification();
+            Toast.makeText(getApplicationContext(), "Congratulations you have reached your savings target for the month", Toast.LENGTH_LONG).show();
         }
+
+        mDatabaseManager.closeDB();
+
+        Intent intentHome = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intentHome);
+        setResult(RESULT_OK, intentHome);
+        finish();
+    }
+
+    public void sendNotification() {
+        String CHANNEL_ID = "Income_01";
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setStyle(new NotificationCompat.BigTextStyle())
+                .setContentTitle("Savings Alert")
+                .setVibrate(new long[]{1000, 1000})
+                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setLights(Color.RED, 500, 500)
+                .setContentText("Congratulations you have reached your savings target for the month");
+        builder.setPriority(PRIORITY_HIGH);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Context context;
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        builder.setContentIntent(pendingIntent);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            CHANNEL_ID = " Income_01";
+            String description = getString(R.string.channel_description);
+            Log.e("Notify", CHANNEL_ID);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+        }
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(2, builder.build());
+    }
 
 }

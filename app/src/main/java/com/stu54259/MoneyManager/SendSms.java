@@ -50,9 +50,9 @@ public class SendSms extends MainActivity {
             }
         });
 
-        sendSms = (Button) findViewById(R.id.sendSms);
-        txtphoneNo = (EditText) findViewById(R.id.editText);
-        txtMessage = (EditText) findViewById(R.id.editText2);
+        sendSms = findViewById(R.id.sendSms);
+        txtphoneNo = findViewById(R.id.editText);
+        txtMessage = findViewById(R.id.editText2);
         contactnumber = findViewById(R.id.contactnumber);
 
 
@@ -109,7 +109,7 @@ public class SendSms extends MainActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NotNull String permissions[], @NotNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NotNull String[] permissions, @NotNull int[] grantResults) {
         if (requestCode == MY_PERMISSIONS_REQUEST_SEND_SMS) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -135,6 +135,7 @@ public class SendSms extends MainActivity {
 
         sendSMSMessage();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

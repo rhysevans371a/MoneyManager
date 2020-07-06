@@ -1,7 +1,7 @@
 <resources>
-    <!-- Base application themes. -->
+    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your themes here. -->
+        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -16,33 +16,22 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="textSmall">
-        <item name="android:textSize">8sp</item>
-    </style>
-    <style name="textMed">
-        <item name="android:textSize">14sp</item>
-    </style>
-    <style name="textLarge">
-        <item name="android:textSize">18sp</item>
-    </style>
-    <style name="textBlack">
-        <item name="android:textColor">#000000</item>
-    </style>
-    <style name="textGreen">
+    <style name="Contrast" parent="AppTheme">
+        <item name="android:windowBackground">@color/colorOrangeBackground</item>
         <item name="android:textColor">#26CB26</item>
+        <item name="android:colorBackground">@color/colorOrangeBackground</item>
+        <item name="backgroundColor">@color/colorOrangeBackground</item>
+        <item name="android:backgroundTint">@color/colorOrangeBackground</item>
+        <item name="android:background">@color/colorOrangeBackground</item>
     </style>
-    <style name="textBlue">
-        <item name="android:textColor">#2E15D0</item>
-    </style>
-    <style name="backgroundDark">
-        <item name="android:colorBackground">#433B3B</item>
-    </style>
-    <style name="backgroundLight">
-        <item name="android:colorBackground">#F7EBEB</item>
-    </style>
-    <style name="backgroundContrast">
-        <item name="android:colorBackground">#FF8C00
-        </item>
+
+    <style name="Dark" parent="AppTheme">
+        <item name="android:windowBackground">@color/ColorDarkBackground</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:colorBackground">@color/ColorDarkBackground</item>
+        <item name="backgroundColor">@color/ColorDarkBackground</item>
+        <item name="android:backgroundTint">@color/ColorDarkBackground</item>
+        <item name="android:background">@color/ColorDarkBackground</item>
     </style>
 
 </resources>
