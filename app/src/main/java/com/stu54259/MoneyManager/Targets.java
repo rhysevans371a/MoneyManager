@@ -3,7 +3,6 @@ package com.stu54259.MoneyManager;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,7 +59,6 @@ public class Targets extends MainActivity {
 
                 com.stu54259.MoneyManager.sql.Targets targets =
                         new com.stu54259.MoneyManager.sql.Targets(targetName, target, month, saveDescription, null);
-                Log.e("Targets check", targetName + targetAmount + month + saveDescription);
                 long id = mDatabase.createTarget(targets);
                 targetAmount.setText("");
                 targetDescription.setText("");
@@ -84,7 +82,6 @@ public class Targets extends MainActivity {
 
                 com.stu54259.MoneyManager.sql.Targets targets =
                         new com.stu54259.MoneyManager.sql.Targets(targetName, target, month, saveDescription, null);
-                Log.e("Targets check", targetName + targetAmount + month + saveDescription);
                 long id = mDatabase.createTarget(targets);
                 targetAmount.setText("");
                 targetDescription.setText("");

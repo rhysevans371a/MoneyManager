@@ -161,6 +161,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
         }
     }
+
     /**
      * This method is to empty all input edit text
      */

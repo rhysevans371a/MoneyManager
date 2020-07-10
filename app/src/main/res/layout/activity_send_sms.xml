@@ -83,7 +83,7 @@
             android:fontFamily="@font/roboto_regular"
             android:onClick="sendSMS"
             android:text="@string/send_sms"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>

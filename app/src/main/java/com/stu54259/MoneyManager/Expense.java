@@ -84,7 +84,14 @@ public class Expense extends MainActivity {
             public void onValueSelected(Entry e, Highlight h) {
                 Toast.makeText(getApplicationContext(), String.format("%.2f",
                         (e.getY() / TOTAL_EXPENSES) * 100.0f) + "% of your total " + EXPENSE, Toast.LENGTH_LONG).show();
-
+                if (e.getY() / TOTAL_EXPENSES * 100.0f > 50) {
+                    Toast.makeText(getApplicationContext(),
+                            "This is over 50% of your outgoings consider curbing this a little for the rest of the month", Toast.LENGTH_LONG).show();
+                }
+                if (e.getY() / TOTAL_EXPENSES * 100.0f < 10) {
+                    Toast.makeText(getApplicationContext(),
+                            "Looks like this is quite low this month, consider transferring some extra to savings", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -154,6 +161,8 @@ public class Expense extends MainActivity {
                 (EXPENSE) + " for month in £");
 
         pieChart.setRotationEnabled(false);
+        pieChart.setDescription(null);
+
         //pieChart.setUsePercentValues(true);
         //pieChart.setHoleColor(Color.BLUE);
         //pieChart.setCenterTextColor(Color.BLACK);
@@ -164,7 +173,7 @@ public class Expense extends MainActivity {
 //        pieChart.setEntryLabelTextSize(20);
 
         set.setSliceSpace(2);
-        set.setValueTextSize(12);
+        set.setValueTextSize(8);
 
         //add colors to dataset
         final int[] colors = {

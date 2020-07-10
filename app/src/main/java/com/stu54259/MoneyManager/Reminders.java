@@ -82,7 +82,6 @@ public class Reminders extends MainActivity {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 eText.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
-                                Log.e("day check", String.valueOf(dayOfMonth));
                             }
                         }, year, month, day);
                 picker.show();
@@ -190,8 +189,6 @@ public class Reminders extends MainActivity {
         Log.d("date", date);
         // Set date at 7AM
         long delay = (milli + 25200000);
-        Log.e("Delay", String.valueOf(milli));
-        Log.e("Timein milli's", String.valueOf(delay));
         scheduleNotification(getNotification(reminder.getText().toString()), delay);
 
         Intent intentHome = new Intent(getApplicationContext(), MainActivity.class);

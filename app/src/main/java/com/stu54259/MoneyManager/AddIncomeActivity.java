@@ -14,7 +14,6 @@ import android.provider.Settings;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +41,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static androidx.core.app.NotificationCompat.PRIORITY_HIGH;
+import static com.stu54259.MoneyManager.Reminders.NOTIFICATION_CHANNEL_ID;
 
 public class AddIncomeActivity extends MainActivity {
 
@@ -110,7 +110,6 @@ public class AddIncomeActivity extends MainActivity {
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 eText.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
                                 month_select = monthOfYear;
-                                Log.e("day check", String.valueOf(dayOfMonth));
                             }
                         }, year, month, day);
 
@@ -140,7 +139,6 @@ public class AddIncomeActivity extends MainActivity {
             Account account = allAccounts.get(i);
 
             accountTypes.add(account.getAccountType());
-            Log.e("Account Type", account.getAccountType());
         }
 
 
@@ -280,7 +278,6 @@ public class AddIncomeActivity extends MainActivity {
 
         Income income = new Income(chosenAccountName,
                 chosenSource, Double.parseDouble(userIncomeAmount), userIncomeDescription, date, month);
-        Log.e("Month chosen", String.valueOf(month));
 
         long income_id = mDatabaseManager.createIncome(income);
 
@@ -298,9 +295,7 @@ public class AddIncomeActivity extends MainActivity {
     public void incomeCheck() {
 
         savingsMonth = mDatabaseManager.savings_month(savingsMonth);
-        Log.e("Savingsmonth", String.valueOf(savingsMonth));
         savingsTarget = mDatabaseManager.savings_target(savingsTarget);
-        Log.e("Savings Target", String.valueOf(savingsTarget));
         if (savingsMonth >= savingsTarget) {
             sendNotification();
             Toast.makeText(getApplicationContext(), "Congratulations you have reached your savings target for the month", Toast.LENGTH_LONG).show();
@@ -315,8 +310,8 @@ public class AddIncomeActivity extends MainActivity {
     }
 
     public void sendNotification() {
-        String CHANNEL_ID = "Income_01";
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setStyle(new NotificationCompat.BigTextStyle())
                 .setContentTitle("Savings Alert")
@@ -326,6 +321,7 @@ public class AddIncomeActivity extends MainActivity {
                 .setLights(Color.RED, 500, 500)
                 .setContentText("Congratulations you have reached your savings target for the month");
         builder.setPriority(PRIORITY_HIGH);
+        builder.setChannelId(NOTIFICATION_CHANNEL_ID);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         Context context;
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
@@ -334,11 +330,11 @@ public class AddIncomeActivity extends MainActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = getString(R.string.channel_name);
-            CHANNEL_ID = " Income_01";
+
             String description = getString(R.string.channel_description);
-            Log.e("Notify", CHANNEL_ID);
+
             int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, name, importance);
             channel.setDescription(description);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);

@@ -189,7 +189,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         Cursor c = mDatabaseManager.rawQuery("SELECT SUM(income_amount) FROM " +
                 TABLE_INCOME + " WHERE " + COL_MONTH + " = '" + month_now + "'", null);
-        Log.e("Month now", String.valueOf(month_now));
         if (c != null)
             c.moveToFirst();
         do {
@@ -211,7 +210,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor c = mDatabaseManager.rawQuery("SELECT SUM(expenses_amount) FROM " +
                 TABLE_EXPENSES + " WHERE " + COL_MONTH + " = '" + month_now + "'" +
                 " AND " + COL_EXPENSES_SOURCE + " = '" + reg + "'", null);
-        Log.e("Month now", String.valueOf(month_now));
         if (c != null)
             c.moveToFirst();
         do {
@@ -220,7 +218,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
         while (c.moveToNext());
         c.close();
-        Log.e("value of regular", String.valueOf(regularExpense));
         return regularExpense;
     }
 
@@ -233,7 +230,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor c = mDatabaseManager.rawQuery("SELECT SUM(expenses_amount) FROM " +
                 TABLE_EXPENSES + " WHERE " + COL_MONTH + " = '" + month_now + "'" +
                 " AND " + COL_EXPENSES_SOURCE + " = '" + reg + "'", null);
-        Log.e("Month now", String.valueOf(month_now));
         if (c != null)
             c.moveToFirst();
         do {
@@ -242,7 +238,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
         while (c.moveToNext());
         c.close();
-        Log.e("value of essential", String.valueOf(essentialExpense));
         return essentialExpense;
     }
 
@@ -255,7 +250,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor c = mDatabaseManager.rawQuery("SELECT SUM(expenses_amount) FROM " +
                 TABLE_EXPENSES + " WHERE " + COL_MONTH + " = '" + month_now + "'" +
                 " AND " + COL_EXPENSES_SOURCE + " = '" + reg + "'", null);
-        Log.e("Month now", String.valueOf(month_now));
         if (c != null)
             c.moveToFirst();
         do {
@@ -264,7 +258,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
         while (c.moveToNext());
         c.close();
-        Log.e("value of regular", String.valueOf(entertainmentExpense));
         return entertainmentExpense;
     }
 
@@ -277,7 +270,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor c = mDatabaseManager.rawQuery("SELECT SUM(expenses_amount) FROM " +
                 TABLE_EXPENSES + " WHERE " + COL_MONTH + " = '" + month_now + "'" +
                 " AND " + COL_EXPENSES_SOURCE + " = '" + reg + "'", null);
-        Log.e("Month now", String.valueOf(month_now));
         if (c != null)
             c.moveToFirst();
         do {
@@ -286,7 +278,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
         while (c.moveToNext());
         c.close();
-        Log.e("value of regular", String.valueOf(paypalExpense));
         return paypalExpense;
     }
 
@@ -297,7 +288,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         Cursor c = mDatabaseManager.rawQuery("SELECT SUM(expenses_amount) FROM " +
                 TABLE_EXPENSES + " WHERE " + COL_MONTH + " = '" + month_now + "'", null);
-        Log.e("Month now", String.valueOf(month_now));
         if (c != null)
             c.moveToFirst();
         do {

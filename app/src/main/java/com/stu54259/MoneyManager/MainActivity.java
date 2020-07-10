@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         scaleString = prfs.getFloat("FontScale", 1.0f);
         adjustFontScale(getResources().getConfiguration(), scaleString);
-        Log.e("Scale", String.valueOf(scaleString));
         setContentView(R.layout.activity_main);
         db = new UserDatabase(this);
         mDatabase = new DatabaseManager(this);
@@ -151,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView incomeview = findViewById(R.id.income);
         incomeview.setText("" + month_income);
-        Log.e("Month income", String.valueOf(month_income));
 
         // Display running expenses total
 
@@ -263,7 +261,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-// This method scales the font up or down depending on user selected scale
+
+    // This method scales the font up or down depending on user selected scale
     public void adjustFontScale(Configuration configuration, float scale) {
         configuration = getResources().getConfiguration();
         configuration.fontScale = scale;

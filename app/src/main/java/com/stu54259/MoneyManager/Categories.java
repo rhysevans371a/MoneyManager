@@ -173,11 +173,11 @@ public class Categories extends MainActivity {
                     if (recordSpinner.getSelectedItem().equals(EXPENSE)) {
                         Toast.makeText(getApplicationContext(), String.format("%.2f",
                                 (e.getY() / TOTAL_EXPENSES) * 100.0f) + "% of your total " + EXPENSE, Toast.LENGTH_LONG).show();
-                        if (e.getY() / TOTAL_EXPENSES * 100.0f > 70) {
+                        if (e.getY() / TOTAL_EXPENSES * 100.0f > 50) {
                             Toast.makeText(getApplicationContext(),
-                                    "This is over 70% of your outgoings consider curbing this a little for the rest of the month", Toast.LENGTH_LONG).show();
+                                    "This is over 50% of your outgoings consider curbing this a little for the rest of the month", Toast.LENGTH_LONG).show();
                         }
-                        if (e.getY() / TOTAL_EXPENSES * 100.0f < 30) {
+                        if (e.getY() / TOTAL_EXPENSES * 100.0f < 10) {
                             Toast.makeText(getApplicationContext(),
                                     "Looks like this is quite low this month, consider transferring some extra to savings", Toast.LENGTH_LONG).show();
                         }
@@ -289,12 +289,13 @@ public class Categories extends MainActivity {
                 (request.equals(INCOME) ? INCOME : EXPENSE) + " Category in £");
 
         pieChart.setRotationEnabled(false);
+        pieChart.setDescription(null);
         //pieChart.setUsePercentValues(true);
         //pieChart.setHoleColor(Color.BLUE);
         //pieChart.setCenterTextColor(Color.BLACK);
         pieChart.setHoleRadius(22f);
         pieChart.setTransparentCircleAlpha(0);
-        pieChart.setCenterTextSize(10);
+        pieChart.setCenterTextSize(8);
         //pieChart.setDrawEntryLabels(true);
 //        pieChart.setEntryLabelTextSize(20);
 

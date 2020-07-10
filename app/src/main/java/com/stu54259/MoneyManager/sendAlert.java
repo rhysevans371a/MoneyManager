@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.telephony.SmsManager;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
@@ -42,7 +41,6 @@ public class sendAlert extends JobService {
 
         // Check if savings limit has been reached
         if (savingsmonth >= savingstarget) {
-            Log.e("Compare check", String.valueOf(savingsmonth + savingstarget));
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setContentTitle("Savings Alert")
@@ -67,7 +65,6 @@ public class sendAlert extends JobService {
 
         // Check if expense limit has been reached
         if (expenseMonth >= expenseLimit) {
-            Log.e("Compare expense target", String.valueOf(expenseMonth + expenseLimit));
             NotificationCompat.Builder myExpenseBuilder = new NotificationCompat.Builder(this)
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setContentTitle("Spending Alert")

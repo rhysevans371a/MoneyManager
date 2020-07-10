@@ -165,6 +165,7 @@ public class Income extends MainActivity {
                 (INCOME) + " for month in £");
 
         pieChart.setRotationEnabled(false);
+        pieChart.setDescription(null);
         //pieChart.setUsePercentValues(true);
         //pieChart.setHoleColor(Color.BLUE);
         //pieChart.setCenterTextColor(Color.BLACK);
@@ -175,7 +176,7 @@ public class Income extends MainActivity {
 //        pieChart.setEntryLabelTextSize(20);
 
         set.setSliceSpace(2);
-        set.setValueTextSize(12);
+        set.setValueTextSize(8);
 
         //add colors to dataset
         final int[] colors = {

@@ -5,7 +5,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
 import android.telephony.SmsManager;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -37,10 +36,8 @@ public class NotificationWorker extends Worker {
         String contactNumber = MainActivity.contactNumber;
         savingsMonth = mDatabase.savings_month(savingsMonth);
         savingsTarget = mDatabase.savings_target(savingsTarget);
-        Log.e("Check contact number", contactNumber);
         if (savingsMonth >= savingsTarget) { SmsManager smgr = SmsManager.getDefault();
             smgr.sendTextMessage(contactNumber,null,Message,null,null);
-            Log.e("Mobile", contactNumber);
         }
 
 

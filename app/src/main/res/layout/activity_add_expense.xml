@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/home"
             android:layout_width="30dp"
@@ -19,189 +20,189 @@
 
 
         <LinearLayout
-        android:id="@+id/firstRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="20dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/expenseSourceLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/source"
-            android:textSize="@dimen/editTextSize"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/expenseSourceSpinner"
+            android:id="@+id/firstRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginLeft="28dp"
-            android:autofillHints="@string/source"
-            android:fontFamily="@font/roboto_regular" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/expenseSourceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/source"
+                android:textSize="@dimen/editTextSize"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/secondRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/firstRow"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="20dp"
-        android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/expenseSourceSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:autofillHints="@string/source"
+                android:fontFamily="@font/roboto_regular" />
 
-        <TextView
-            android:id="@+id/expenseAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/amount"
-            android:textSize="@dimen/editTextSize"
-            android:textStyle="bold" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/editExpenseAmount"
+        <LinearLayout
+            android:id="@+id/secondRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/text_background"
-            android:fontFamily="@font/roboto_regular"
-            android:hint="@string/expense_numeric"
-            android:imeOptions="actionNext"
-            android:inputType="numberDecimal"
-            android:maxLength="6" />
+            android:layout_below="@id/firstRow"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/expenseAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/amount"
+                android:textSize="@dimen/editTextSize"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/thirdRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/secondRow"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="20dp"
-        android:orientation="horizontal">
+            <EditText
+                android:id="@+id/editExpenseAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/text_background"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/expense_numeric"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="6" />
 
-        <TextView
-            android:id="@+id/expenseAccountLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/account"
-            android:textSize="@dimen/editTextSize"
-            android:textStyle="bold" />
+        </LinearLayout>
 
-        <Spinner
-            android:id="@+id/expenseAccountSpinner"
+        <LinearLayout
+            android:id="@+id/thirdRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp" />
+            android:layout_below="@id/secondRow"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/expenseAccountLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/account"
+                android:textSize="@dimen/editTextSize"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/expenseAccountSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp" />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/fourthRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/thirdRow"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="20dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/expenseDescriptionLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/description"
-            android:textSize="@dimen/editTextSize"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/expenseEditDescription"
+        <LinearLayout
+            android:id="@+id/fourthRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginLeft="35dp"
-            android:background="@drawable/text_background"
-            android:fontFamily="@font/roboto_regular"
-            android:hint="@string/account_description"
-            android:imeOptions="actionDone"
-            android:inputType="textMultiLine"
-            android:maxLength="50"
-            android:maxLines="3" />
+            android:layout_below="@id/thirdRow"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/expenseDescriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/description"
+                android:textSize="@dimen/editTextSize"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/fifthRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fourthRow"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="20dp"
-        android:orientation="horizontal">
+            <EditText
+                android:id="@+id/expenseEditDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:background="@drawable/text_background"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/account_description"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:maxLength="50"
+                android:maxLines="3" />
 
-        <EditText
-            android:id="@+id/reminderDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="Enter Date" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button1"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="10dp"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/sixthRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fifthRow"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="25dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/saveExpenseButton"
+        <LinearLayout
+            android:id="@+id/fifthRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/btn_custom"
-            android:onClick="saveExpense"
-            android:padding="16dp"
-            android:text="@string/save"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/buttonTextSize" />
+            android:layout_below="@id/fourthRow"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/reminderDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="Enter Date" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button1"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sixthRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fifthRow"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="25dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/saveExpenseButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/btn_custom"
+                android:onClick="saveExpense"
+                android:padding="16dp"
+                android:text="@string/save"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/buttonTextSize" />
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
-</LinearLayout>
 </ScrollView>

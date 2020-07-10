@@ -14,7 +14,6 @@ import android.provider.Settings;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +40,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static androidx.core.app.NotificationCompat.PRIORITY_HIGH;
+import static com.stu54259.MoneyManager.Reminders.NOTIFICATION_CHANNEL_ID;
 
 public class AddExpenseActivity extends MainActivity {
 
@@ -133,7 +133,6 @@ public class AddExpenseActivity extends MainActivity {
             Account account = allAccounts.get(i);
 
             accountTypes.add(account.getAccountType());
-            Log.e("Account Type", account.getAccountType());
         }
 
         ArrayAdapter<CharSequence> accountAdapter = ArrayAdapter.createFromResource(this,
@@ -306,8 +305,8 @@ public class AddExpenseActivity extends MainActivity {
     }
 
     public void sendNotification() {
-        String CHANNEL_ID = "Expense_01";
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Expense Alert")
                 .setStyle(new NotificationCompat.BigTextStyle())
@@ -317,6 +316,7 @@ public class AddExpenseActivity extends MainActivity {
                 .setLights(Color.RED, 500, 500)
                 .setContentText("Warning! You have exceeded your spending limit this month");
         builder.setPriority(PRIORITY_HIGH);
+        builder.setChannelId(NOTIFICATION_CHANNEL_ID);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         Context context;
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
@@ -324,11 +324,9 @@ public class AddExpenseActivity extends MainActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = getString(R.string.channel_name);
-            CHANNEL_ID = " Expense_01";
             String description = getString(R.string.channel_description);
-            Log.e("Notify", CHANNEL_ID);
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, name, importance);
             channel.setDescription(description);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);

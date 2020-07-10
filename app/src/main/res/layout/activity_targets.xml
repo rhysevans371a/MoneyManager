@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/home"
             android:layout_width="30dp"
@@ -23,8 +24,7 @@
             android:id="@+id/firstrow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -87,6 +87,7 @@
                 android:textSize="14sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/fifthrow"
             android:layout_width="match_parent"
@@ -104,7 +105,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:onClick="saveTarget"
                 android:text="@string/save_target"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/saveLimit"

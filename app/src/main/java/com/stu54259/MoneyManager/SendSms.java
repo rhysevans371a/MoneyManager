@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -55,7 +54,6 @@ public class SendSms extends MainActivity {
         txtMessage = findViewById(R.id.editText2);
         contactnumber = findViewById(R.id.contactnumber);
 
-
     }
 
 
@@ -92,8 +90,6 @@ public class SendSms extends MainActivity {
     protected void sendSMSMessage() {
         phoneNo = contactnumber.getText().toString();
         message = txtMessage.getText().toString();
-        Log.e("Mobile no", phoneNo);
-        Log.e("Message", message);
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS)

@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/home"
             android:layout_width="30dp"
@@ -18,130 +19,130 @@
             android:onClick="backHome" />
 
 
-    <LinearLayout
-        android:id="@+id/firstRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="25dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/accountType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/AccountType"
-            android:textSize="@dimen/editTextSize"
-
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/typeSpinner"
+        <LinearLayout
+            android:id="@+id/firstRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginLeft="28dp" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="25dp"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/accountType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/AccountType"
+                android:textSize="@dimen/editTextSize"
 
-    <LinearLayout
-        android:id="@+id/secondRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/firstRow"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="25dp"
-        android:orientation="horizontal">
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Balance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/balance"
-            android:textSize="@dimen/editTextSize"
-            android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/typeSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp" />
 
-        <EditText
-            android:id="@+id/editBalance"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:autofillHints=""
-            android:background="@drawable/text_background"
-            android:fontFamily="@font/roboto_regular"
-            android:hint="@string/edit_balance"
-            android:imeOptions="actionNext"
-            android:inputType="numberDecimal"
-            android:maxLength="7" />
+            android:layout_below="@id/firstRow"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="25dp"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/Balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/balance"
+                android:textSize="@dimen/editTextSize"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/thirdRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/secondRow"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="25dp"
-        android:orientation="horizontal">
+            <EditText
+                android:id="@+id/editBalance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:autofillHints=""
+                android:background="@drawable/text_background"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/edit_balance"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="7" />
 
-        <TextView
-            android:id="@+id/descriptionLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/description"
-            android:textSize="@dimen/editTextSize"
-            android:textStyle="bold" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/editDescription"
+        <LinearLayout
+            android:id="@+id/thirdRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginLeft="35dp"
-            android:autofillHints=""
-            android:background="@drawable/text_background"
-            android:fontFamily="@font/roboto_regular"
-            android:hint="@string/account_description"
-            android:imeOptions="actionDone"
-            android:inputType="textMultiLine"
-            android:maxLength="50"
-            android:maxLines="3" />
+            android:layout_below="@id/secondRow"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="25dp"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/descriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/description"
+                android:textSize="@dimen/editTextSize"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/forthRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/thirdRow"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="25dp"
-        android:orientation="horizontal">
+            <EditText
+                android:id="@+id/editDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:autofillHints=""
+                android:background="@drawable/text_background"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/account_description"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:maxLength="50"
+                android:maxLines="3" />
 
-        <Button
-            android:id="@+id/saveButton"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/forthRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/btn_custom"
-            android:onClick="saveAccount"
-            android:padding="16dp"
-            android:text="@string/save"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/buttonTextSize" />
+            android:layout_below="@id/thirdRow"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="25dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/btn_custom"
+                android:onClick="saveAccount"
+                android:padding="16dp"
+                android:text="@string/save"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/buttonTextSize" />
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
-</LinearLayout>
 </ScrollView>
