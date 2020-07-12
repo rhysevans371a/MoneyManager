@@ -1,6 +1,5 @@
 package com.stu54259.MoneyManager;
 
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -56,37 +55,37 @@ public class LoginActivityTest {
     @Test
     public void loginActivityTest() {
         ViewInteraction textInputEditText = onView(
-                allOf(withId(R.id.textInputEditTextEmail),
+                allOf(withId(R.id.emailText),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.textInputLayoutEmail),
+                                        withId(R.id.emailLayout),
                                         0),
                                 0),
                         isDisplayed()));
         textInputEditText.perform(replaceText("test@gmail.com"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText2 = onView(
-                allOf(withId(R.id.textInputEditTextPassword),
+                allOf(withId(R.id.passwordText),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.textInputLayoutPassword),
+                                        withId(R.id.passwordLayout),
                                         0),
                                 0),
                         isDisplayed()));
         textInputEditText2.perform(replaceText("password"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText3 = onView(
-                allOf(withId(R.id.textInputEditTextPassword), withText("password"),
+                allOf(withId(R.id.passwordText), withText("password"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.textInputLayoutPassword),
+                                        withId(R.id.passwordLayout),
                                         0),
                                 0),
                         isDisplayed()));
         textInputEditText3.perform(pressImeActionButton());
 
         ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.appCompatButtonLogin), withText("Login"),
+                allOf(withId(R.id.buttonLogin), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nestedScrollView),
@@ -96,7 +95,7 @@ public class LoginActivityTest {
         appCompatButton.perform(click());
 
         ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.appCompatButtonLogin), withText("Login"),
+                allOf(withId(R.id.buttonLogin), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nestedScrollView),
@@ -106,7 +105,7 @@ public class LoginActivityTest {
         appCompatButton2.perform(click());
 
         ViewInteraction appCompatButton3 = onView(
-                allOf(withId(R.id.appCompatButtonLogin), withText("Login"),
+                allOf(withId(R.id.buttonLogin), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nestedScrollView),

@@ -24,24 +24,25 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private final AppCompatActivity activity = RegisterActivity.this;
     private NestedScrollView nestedScrollView;
 
-    private TextInputLayout textInputLayoutName;
-    private TextInputLayout textInputLayoutEmail;
-    private TextInputLayout textInputLayoutPassword;
-    private TextInputLayout textInputLayoutConfirmPassword;
+    private TextInputLayout mNameLayout;
+    private TextInputLayout mEmailLayout;
+    private TextInputLayout mPasswordLayout;
+    private TextInputLayout mConfirmPassword;
 
-    private TextInputEditText textInputEditTextName;
-    private TextInputEditText textInputEditTextEmail;
-    private TextInputEditText textInputEditTextPassword;
-    private TextInputEditText textInputEditTextConfirmPassword;
+    private TextInputEditText nameText;
+    private TextInputEditText emailText;
+    private TextInputEditText passwordText;
+    private TextInputEditText confirmPasswordText;
     private TextInputEditText contactnumber;
 
-    private AppCompatButton appCompatButtonRegister;
-    private AppCompatTextView appCompatTextViewLoginLink;
+    private AppCompatButton registerButton;
+    private AppCompatTextView loginLink;
 
     private InputValidation inputValidation;
     private UserDatabase mUserDatabase;
     private User user;
 
+    // (Vasan, 2016)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,42 +54,34 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initObjects();
     }
 
-    /**
-     * This method is to initialize views
-     */
+
     @SuppressLint("WrongViewCast")
     private void initViews() {
         nestedScrollView = findViewById(R.id.nestedScrollView);
 
-        textInputLayoutName = findViewById(R.id.textInputLayoutName);
-        textInputLayoutEmail = findViewById(R.id.textInputLayoutEmail);
-        textInputLayoutPassword = findViewById(R.id.textInputLayoutPassword);
-        textInputLayoutConfirmPassword = findViewById(R.id.textInputLayoutConfirmPassword);
+        mNameLayout = findViewById(R.id.mNameLayout);
+        mEmailLayout = findViewById(R.id.emailLayout);
+        mPasswordLayout = findViewById(R.id.passwordLayout);
+        mConfirmPassword = findViewById(R.id.confirmPasswordLayout);
 
-        textInputEditTextName = findViewById(R.id.textInputEditTextName);
-        textInputEditTextEmail = findViewById(R.id.textInputEditTextEmail);
-        textInputEditTextPassword = findViewById(R.id.textInputEditTextPassword);
-        textInputEditTextConfirmPassword = findViewById(R.id.textInputEditTextConfirmPassword);
+        nameText = findViewById(R.id.textInputEditTextName);
+        emailText = findViewById(R.id.emailText);
+        passwordText = findViewById(R.id.passwordText);
+        confirmPasswordText = findViewById(R.id.textInputEditTextConfirmPassword);
         contactnumber = findViewById(R.id.mobile_numberText);
 
-        appCompatButtonRegister = findViewById(R.id.appCompatButtonRegister);
+        registerButton = findViewById(R.id.registerButton);
 
-        appCompatTextViewLoginLink = findViewById(R.id.appCompatTextViewLoginLink);
+        loginLink = findViewById(R.id.loginLink);
 
     }
 
-    /**
-     * This method is to initialize listeners
-     */
     private void initListeners() {
-        appCompatButtonRegister.setOnClickListener(this);
-        appCompatTextViewLoginLink.setOnClickListener(this);
+        registerButton.setOnClickListener(this);
+        loginLink.setOnClickListener(this);
 
     }
 
-    /**
-     * This method is to initialize objects to be used
-     */
     private void initObjects() {
         inputValidation = new InputValidation(activity);
         mUserDatabase = new UserDatabase(activity);
@@ -96,51 +89,45 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    /**
-     * This implemented method is to listen the click on view
-     *
-     * @param v
-     */
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
 
-            case R.id.appCompatButtonRegister:
+            case R.id.registerButton:
                 postDataToSQLite();
                 break;
 
-            case R.id.appCompatTextViewLoginLink:
+            case R.id.loginLink:
                 finish();
                 break;
         }
     }
 
-    /**
-     * This method is to validate the input text fields and post data to SQLite
-     */
+
     private void postDataToSQLite() {
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextName, textInputLayoutName, getString(R.string.error_message_name))) {
+        if (!inputValidation.isInputEditTextFilled(nameText, mNameLayout, getString(R.string.error_message_name))) {
             return;
         }
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+        if (!inputValidation.isInputEditTextFilled(emailText, mEmailLayout, getString(R.string.error_message_email))) {
             return;
         }
-        if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+        if (!inputValidation.isInputEditTextEmail(emailText, mEmailLayout, getString(R.string.error_message_email))) {
             return;
         }
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_password))) {
+        if (!inputValidation.isInputEditTextFilled(passwordText, mPasswordLayout, getString(R.string.error_message_password))) {
             return;
         }
-        if (!inputValidation.isInputEditTextMatches(textInputEditTextPassword, textInputEditTextConfirmPassword,
-                textInputLayoutConfirmPassword, getString(R.string.error_password_match))) {
+        if (!inputValidation.isInputEditTextMatches(passwordText, confirmPasswordText,
+                mConfirmPassword, getString(R.string.error_password_match))) {
             return;
         }
 
-        if (!mUserDatabase.checkUser(textInputEditTextEmail.getText().toString().trim())) {
+        if (!mUserDatabase.checkUser(emailText.getText().toString().trim())) {
 
-            user.setName(textInputEditTextName.getText().toString().trim());
-            user.setEmail(textInputEditTextEmail.getText().toString().trim());
-            user.setPassword(textInputEditTextPassword.getText().toString().trim());
+            user.setName(nameText.getText().toString().trim());
+            user.setEmail(emailText.getText().toString().trim());
+            user.setPassword(passwordText.getText().toString().trim());
             user.setMobile(contactnumber.getText().toString().trim());
 
             mUserDatabase.addUser(user);
@@ -162,14 +149,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    /**
-     * This method is to empty all input edit text
-     */
     private void emptyInputEditText() {
-        textInputEditTextName.setText(null);
-        textInputEditTextEmail.setText(null);
-        textInputEditTextPassword.setText(null);
-        textInputEditTextConfirmPassword.setText(null);
+        nameText.setText(null);
+        emailText.setText(null);
+        passwordText.setText(null);
+        confirmPasswordText.setText(null);
         contactnumber.setText(null);
     }
 }

@@ -56,7 +56,7 @@ public class RegisterTest {
     @Test
     public void registerTest() {
         ViewInteraction appCompatTextView = onView(
-                allOf(withId(R.id.textViewLinkRegister), withText("No account yet? Create one"),
+                allOf(withId(R.id.registerLink), withText("No account yet? Create one"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nestedScrollView),
@@ -69,27 +69,27 @@ public class RegisterTest {
                 allOf(withId(R.id.textInputEditTextName),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.textInputLayoutName),
+                                        withId(R.id.mNameLayout),
                                         0),
                                 0),
                         isDisplayed()));
         textInputEditText.perform(replaceText("Test User"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText2 = onView(
-                allOf(withId(R.id.textInputEditTextEmail),
+                allOf(withId(R.id.emailText),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.textInputLayoutEmail),
+                                        withId(R.id.emailLayout),
                                         0),
                                 0),
                         isDisplayed()));
         textInputEditText2.perform(replaceText("test@gmail.com"), closeSoftKeyboard());
 
         ViewInteraction textInputEditText3 = onView(
-                allOf(withId(R.id.textInputEditTextPassword),
+                allOf(withId(R.id.passwordText),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.textInputLayoutPassword),
+                                        withId(R.id.passwordLayout),
                                         0),
                                 0),
                         isDisplayed()));
@@ -99,7 +99,7 @@ public class RegisterTest {
                 allOf(withId(R.id.textInputEditTextConfirmPassword),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.textInputLayoutConfirmPassword),
+                                        withId(R.id.confirmPasswordLayout),
                                         0),
                                 0),
                         isDisplayed()));
@@ -126,7 +126,7 @@ public class RegisterTest {
         textInputEditText6.perform(pressImeActionButton());
 
         ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.appCompatButtonRegister), withText("Register"),
+                allOf(withId(R.id.registerButton), withText("Register"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nestedScrollView),

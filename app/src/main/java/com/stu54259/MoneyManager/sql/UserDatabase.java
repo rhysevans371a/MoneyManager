@@ -215,3 +215,4 @@ public class UserDatabase extends SQLiteOpenHelper {
         return cursorCount > 0;
     }
 }
+//(Vasan, 2016)
